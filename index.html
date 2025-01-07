@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Múltiplas Cópias da Imagem</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap; /* Permite que as imagens se ajustem em várias linhas, se necessário */
+            justify-content: center; /* Centraliza as imagens horizontalmente */
+            align-items: center; /* Centraliza as imagens verticalmente */
+            height: 100vh; /* Define a altura do corpo para 100% da altura da tela */
+            overflow: hidden; /* Impede a rolagem */
+            animation: mudarCor 20s infinite; /* Aplica a animação ao contêiner */
+        }
+
+        @keyframes mudarCor {
+            0%  { background-image: url("smurfcat.jpg"); }
+            25% { background-image: url("Tranquilo.jpg"); }
+            50% { background-image: url("Catzazuuu.png.jpg"); }
+            75% { background-image: url("Pedrasigma.jpg"); }
+            100% { background-image: url("Absolutecinema.jpg"); }
+        }
+
+        .image-container {
+            width: 150px; /* Defina um tamanho fixo para o contêiner */
+            height: 150px; /* Defina um tamanho fixo para o contêiner */
+            margin: 5px; /* Espaçamento entre as imagens */
+            display: flex; /* Para centralizar a imagem dentro do contêiner */
+            justify-content: center; /* Centraliza a imagem horizontalmente */
+            align-items: center; /* Centraliza a imagem verticalmente */ 
+            transition: filter 200ms linear;
+        }
+
+        .image-container:hover {
+            animation: changeColor 3s infinite, girogiro 1s linear; /* Animações de mudança de cor e giro ao passar o mouse */
+        }
+
+        img {
+            max-width: 100%; /* Garante que a imagem não ultrapasse o contêiner */
+            max-height: 100%; /* Garante que a imagem não ultrapasse o contêiner */
+        }
+        
+        @keyframes changeColor {
+            0% {
+                filter: hue-rotate(0deg);
+            }
+            25% {
+                filter: hue-rotate(90deg);
+            }
+            50% {
+                filter: hue-rotate(180deg);
+            }
+            75% {
+                filter: hue-rotate(270deg);
+            }
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        @keyframes girogiro {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+
+<audio id="audio" autoplay loop muted >
+    <source src="miau-triste.mp3" type="audio/mpeg">
+</audio>
+
+</audio>
+</head>
+<body>
+    <script>
+        const numImages = 27; // Número de imagens a serem exibidas
+        const imageSrc = "Catzazuuu.png.jpg"; // Caminho da imagem
+        const linkUrl = "https://www.youtube.com/watch?v=PYNeVjzT0P4&ab_channel=MemeMachine"; // URL para onde o link deve redirecionar
+
+        for (let i = 0; i < numImages; i++) {
+            const a = document.createElement("a"); // Cria um novo elemento de link
+            a.href = linkUrl; // Define o URL do link
+
+            const container = document.createElement("div"); // Cria um contêiner para a imagem
+            container.className = "image-container"; // Adiciona a classe para animação
+
+            const img = document.createElement("img"); // Cria um novo elemento de imagem
+            img.src = imageSrc; // Define a fonte da imagem
+            img.alt = "Catzazuuu"; // Define o texto alternativo
+
+            container.appendChild(img); // Adiciona a imagem ao contêiner
+            a.appendChild(container); // Adiciona o contêiner ao link
+            document.body.appendChild(a); // Adiciona o link ao corpo do documento
+        }
+    </script>
+</body>
+</html>
